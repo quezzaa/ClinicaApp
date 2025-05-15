@@ -1,1 +1,9 @@
-<p>nav-bar works!</p>
+<mat-toolbar class="nav-bar">
+  <span class="logo-text" style="display: flex;">
+    <mat-icon style="margin-right: 10px; margin-left:5px;">local_hospital</mat-icon>
+    Clínica Perdida Peso
+  </span>
+  <button mat-mini-fab color="primary" (click)="toggleSidebar()" style="margin-left: 5px;">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

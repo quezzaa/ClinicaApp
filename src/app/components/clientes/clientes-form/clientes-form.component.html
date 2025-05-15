@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Nuevo Cliente</h2>
+
+<form [formGroup]="clienteForm" (ngSubmit)="guardar()" mat-dialog-content style="text-align: center;">
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Nombres</mat-label>
+        <input matInput formControlName="NombresC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="ApellidosC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="CodigoC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>NIT</mat-label>
+        <input matInput formControlName="NitC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="DireccionC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="TelC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="EmailC">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Peso</mat-label>
+        <input matInput formControlName="Peso" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Genero</mat-label>
+        <mat-select matInput formControlName="idSexo">
+            <mat-option [value]="1">Masculino</mat-option>
+            <mat-option [value]="2">Femenino</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="margin-left: 10px;">
+        <mat-label>Nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="Nacimiento">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+    </mat-form-field>
+    <div style="text-align: right; margin-top: 10px;">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+</form>
