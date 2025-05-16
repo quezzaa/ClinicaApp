@@ -1,0 +1,67 @@
+
+<div #reporte>
+  <h2 mat-dialog-title>Reporte de {{ cliente.NombresC }} {{ cliente.ApellidosC }}</h2>
+<mat-dialog-content>
+
+    <h3>Citas</h3>
+    <table mat-table [dataSource]="citas" class="mat-elevation-z8 full-width-table" *ngIf="citas!=null">
+        <ng-container matColumnDef="inicio">
+            <th mat-header-cell *matHeaderCellDef> Inicio </th>
+            <td mat-cell *matCellDef="let cita"> {{ cita.Inicio | date:'dd/MM/yyyy HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="final">
+            <th mat-header-cell *matHeaderCellDef> Final </th>
+            <td mat-cell *matCellDef="let cita"> {{ cita.Final | date:'dd/MM/yyyy HH:mm' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tratamiento">
+            <th mat-header-cell *matHeaderCellDef> Tratamiento </th>
+            <td mat-cell *matCellDef="let cita"> {{ cita.Tratamiento }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="atendido">
+            <th mat-header-cell *matHeaderCellDef> Atendido </th>
+            <td mat-cell *matCellDef="let cita"> {{ cita.Atendido ? 'Sí' : 'No' }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['inicio', 'final', 'tratamiento', 'atendido']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['inicio', 'final', 'tratamiento', 'atendido']"></tr>
+    </table>
+    <br>
+    <mat-divider class="my-4"></mat-divider>
+    <br>
+
+    <h3>Facturas</h3>
+    <table mat-table [dataSource]="facturas" class="mat-elevation-z8 full-width-table" *ngIf="facturas!=null">
+        <ng-container matColumnDef="idFactura">
+            <th mat-header-cell *matHeaderCellDef> No Factura </th>
+            <td mat-cell *matCellDef="let f"> {{ f.idFactura }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Tratamiento">
+            <th mat-header-cell *matHeaderCellDef> Tratamiento </th>
+            <td mat-cell *matCellDef="let f"> {{ f.Tratamiento}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Monto">
+            <th mat-header-cell *matHeaderCellDef> Monto </th>
+            <td mat-cell *matCellDef="let f"> {{ f.Monto | currency:'GTQ':'symbol':'1.2-2' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha">
+            <th mat-header-cell *matHeaderCellDef> Emisión </th>
+            <td mat-cell *matCellDef="let f"> {{ f.Fecha | date:'dd/MM/yyyy' }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['idFactura', 'Tratamiento', 'Monto', 'Fecha']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['idFactura', 'Tratamiento', 'Monto', 'Fecha']"></tr>
+    </table>
+
+
+</mat-dialog-content>  
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="descargarPDF()">Descargar PDF</button>
+    <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

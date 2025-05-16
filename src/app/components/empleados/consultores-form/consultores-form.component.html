@@ -1,1 +1,38 @@
-<p>consultores-form works!</p>
+<h2 mat-dialog-title>Consultores</h2>
+
+<form [formGroup]="consultorForm" (ngSubmit)="guardar()" mat-dialog-content style="text-align: center;">
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="NombresCo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="ApellidosCo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="EmailCo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Dpi</mat-label>
+        <input matInput formControlName="DpiCo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Tel</mat-label>
+        <input matInput formControlName="TelCo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="DireccionCo">
+    </mat-form-field>
+
+    <div style="text-align: right; margin-top: 10px;">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+</form>

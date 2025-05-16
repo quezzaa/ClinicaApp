@@ -3,7 +3,7 @@
   <div class="toolbar">
     <button mat-raised-button color="primary" (click)="abrirFormulario()">Nuevo Cliente</button>
   </div>
-  <mat-card class="clientes-card">
+  <mat-card class="clientes-card" style="overflow-y: auto; overflow-x: auto;">
     <mat-card-content>
       <div class="tabla-scroll">
         <table mat-table [dataSource]="clientes" class="mat-elevation-z8 full-width-table">
@@ -46,7 +46,7 @@
 
           <ng-container matColumnDef="peso">
             <th mat-header-cell *matHeaderCellDef> Peso </th>
-            <td mat-cell *matCellDef="let cliente"> {{ cliente.Peso }} </td>
+            <td mat-cell *matCellDef="let cliente"> {{ cliente.Peso | number:'1.2-2' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="genero">
@@ -68,6 +68,9 @@
               <button mat-icon-button color="warn" (click)="eliminarCliente(cliente.idCliente)">
                 <mat-icon>delete</mat-icon>
               </button>
+              <button mat-icon-button color="accent" (click)="abrirReporte(cliente)">
+      <mat-icon>assignment</mat-icon>
+    </button>
             </td>
           </ng-container>
 

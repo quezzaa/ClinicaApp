@@ -18,7 +18,6 @@ export class SideBarComponent implements OnDestroy {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   private subscription: Subscription;
   menuItems = [
-    { icon: 'home', label: 'Inicio', path: '/inicio' },
     { icon: 'healing', label: 'Tratamientos', path: '/tratamientos' },
     { icon: 'groups', label: 'Clientes', path: '/clientes' },
     { icon: 'person', label: 'Colaboradores', path: '/colaboradores' },

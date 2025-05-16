@@ -1,1 +1,97 @@
-<p>citas works!</p>
+<mat-card style="padding: 40px; height: 590px;">
+  <form [formGroup]="citaForm" (ngSubmit)="guardarCita()" mat-dialog-content>
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Programador</mat-label>
+      <mat-select matInput formControlName="idProgramador">
+            <mat-option [value]="programador.idProgramador" *ngFor="let programador of programadores">{{programador.NombresP +' '+programador.ApellidosP}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Cliente</mat-label>
+      <mat-select matInput formControlName="idCliente">
+            <mat-option [value]="cliente.idCliente" *ngFor="let cliente of clientes">{{cliente.NombresC +' '+cliente.ApellidosC}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Especialista</mat-label>
+      <mat-select matInput formControlName="idEspecialista">
+            <mat-option [value]="especialista.idEspecialista" *ngFor="let especialista of especialistas">{{especialista.NombresE +' '+especialista.ApellidosE +', '+ especialista.Especialidad}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Tratamiento Cliente</mat-label>
+      <mat-select matInput formControlName="idTratamiento">
+            <mat-option [value]="tratamiento.idTratamiento" *ngFor="let tratamiento of tratamientoscliente">{{tratamiento.Tratamiento +', Disponible: '+tratamiento.CantidadDispo}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Fecha</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="FechaGenerada">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Inicio</mat-label>
+      <input matInput type="datetime-local" formControlName="Inicio">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+      <mat-label >Final</mat-label>
+      <input matInput type="datetime-local" formControlName="Final">
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button color="primary" type="submit">
+      {{ editando ? 'Actualizar' : 'Guardar' }}
+    </button>
+    <button mat-button type="button" (click)="resetForm()">Cancelar</button>
+  </form>
+
+  <br>
+  <mat-divider></mat-divider>
+
+<mat-card class="mat-elevation-z2" *ngIf="citas != null" style="margin-top: 20px;">
+  <table mat-table [dataSource]="citas" class="mat-elevation-z2" style="width: 100%;">
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef>Cliente</th>
+      <td mat-cell *matCellDef="let row">{{ row.NombresC +' '+row.ApellidosC }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="especialista">
+      <th mat-header-cell *matHeaderCellDef>Especialista</th>
+      <td mat-cell *matCellDef="let row">{{ row.idEspecialista }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="inicio">
+      <th mat-header-cell *matHeaderCellDef>Inicio</th>
+      <td mat-cell *matCellDef="let row">{{ row.Inicio | date: 'short' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="final">
+      <th mat-header-cell *matHeaderCellDef>Final</th>
+      <td mat-cell *matCellDef="let row">{{ row.Final | date: 'short' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editar(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="eliminar(row.idCita)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['cliente','especialista','inicio','final','acciones']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['cliente','especialista','inicio','final','acciones'];"></tr>
+  </table>
+</mat-card>
+</mat-card>
+

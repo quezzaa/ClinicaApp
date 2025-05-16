@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ClientesServiceService } from '../../services/clientes-service.service';
 import {MatCardModule} from '@angular/material/card';
 import { ToastrService } from 'ngx-toastr';
+import { ReporteClienteDialogComponent } from './reporte-cliente-dialog/reporte-cliente-dialog.component';
 
 @Component({
   selector: 'app-clientes',
@@ -66,4 +67,12 @@ export class ClientesComponent {
       });
     }
   }
+
+  abrirReporte(cliente: any): void {
+  this.dialog.open(ReporteClienteDialogComponent, {
+    width: '700px',
+    data: cliente
+  });
+}
+
 }

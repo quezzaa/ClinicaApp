@@ -1,1 +1,48 @@
-<p>especialistas-form works!</p>
+<h2 mat-dialog-title>Especialistas</h2>
+
+<form [formGroup]="especialistaForm" (ngSubmit)="guardar()" mat-dialog-content style="text-align: center;">
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="NombresE">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="ApellidosE">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Especialidad</mat-label>
+        <input matInput formControlName="Especialidad">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Colegiado</mat-label>
+        <input matInput formControlName="Colegiado">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="EmailE">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Dpi</mat-label>
+        <input matInput formControlName="DpiE">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Tel</mat-label>
+        <input matInput formControlName="TelE">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="DireccionE">
+    </mat-form-field>
+
+    <div style="text-align: right; margin-top: 10px;">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+</form>

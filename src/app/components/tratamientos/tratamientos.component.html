@@ -1,1 +1,51 @@
-<p>tratamientos works!</p>
+<h3>Tratamientos</h3>
+<div class="tratamientos-container" style="width: 100%; height:520px;">
+  <div class="toolbar">
+    <button mat-raised-button color="primary" (click)="abrirFormulario()">Nuevo Tratamiento</button>
+  </div>
+  <mat-card class="tratamientos-card">
+    <mat-card-content>
+      <div class="tabla-scroll">
+        <table mat-table [dataSource]="tratamientos" class="mat-elevation-z8 full-width-table">
+
+          <!-- Columnas -->
+          <ng-container matColumnDef="Tratamiento">
+            <th mat-header-cell *matHeaderCellDef> Tratamiento </th>
+            <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.Tratamiento }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Costo">
+            <th mat-header-cell *matHeaderCellDef> Costo </th>
+            <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.Costo | currency:'GTQ':'symbol':'1.2-2' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="Cantidad">
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+            <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.Cantidad }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Descripcion">
+            <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+            <td mat-cell *matCellDef="let tratamiento"> {{ tratamiento.Descripcion }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let tratamiento">
+              <button mat-icon-button color="primary" (click)="abrirFormulario(tratamiento)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="eliminarTratamiento(tratamiento.idTratamiento)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Filas -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

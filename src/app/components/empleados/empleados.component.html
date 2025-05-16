@@ -1,1 +1,205 @@
-<p>empleados works!</p>
+<h3>Empleados</h3>
+<div class="empleados-container" style="width: 100%; height:520px;">
+    <mat-tab-group>
+        <mat-tab label="Consultores">
+            <div class="toolbar">
+                <button mat-raised-button color="primary" (click)="abrirFormularioConsultores()">Nuevo
+                    consultor</button>
+            </div>
+            <mat-card class="consultores-card">
+                <mat-card-content>
+                    <div class="tabla-scroll">
+                        <table mat-table [dataSource]="consultores" class="mat-elevation-z8 full-width-table">
+
+                            <!-- Columnas -->
+                            <ng-container matColumnDef="Nombres">
+                                <th mat-header-cell *matHeaderCellDef> Nombres </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.NombresCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Apellidos">
+                                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.ApellidosCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Dpi">
+                                <th mat-header-cell *matHeaderCellDef> DPI </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.DpiCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Tel">
+                                <th mat-header-cell *matHeaderCellDef> Tel </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.TelCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.EmailCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Direccion">
+                                <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                                <td mat-cell *matCellDef="let consultor"> {{ consultor.DireccionCo }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="acciones">
+                                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                                <td mat-cell *matCellDef="let consultor">
+                                    <button mat-icon-button color="primary"
+                                        (click)="abrirFormularioConsultores(consultor)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button mat-icon-button color="warn"
+                                        (click)="eliminarConsultor(consultor.idConsultor)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Filas -->
+                            <tr mat-header-row *matHeaderRowDef="colConsultores"></tr>
+                            <tr mat-row *matRowDef="let row; columns: colConsultores;"></tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Programadores">
+            <div class="toolbar">
+                <button mat-raised-button color="primary" (click)="abrirFormularioProgramadores()">Nuevo
+                    programador</button>
+            </div>
+            <mat-card class="programadores-card">
+                <mat-card-content>
+                    <div class="tabla-scroll">
+                        <table mat-table [dataSource]="programadores" class="mat-elevation-z8 full-width-table">
+
+                            <!-- Columnas -->
+                            <ng-container matColumnDef="Nombres">
+                                <th mat-header-cell *matHeaderCellDef> Nombres </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.NombresP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Apellidos">
+                                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.ApellidosP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Dpi">
+                                <th mat-header-cell *matHeaderCellDef> DPI </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.DpiP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Tel">
+                                <th mat-header-cell *matHeaderCellDef> Tel </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.TelP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.EmailP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Direccion">
+                                <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                                <td mat-cell *matCellDef="let programador"> {{ programador.DireccionP }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="acciones">
+                                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                                <td mat-cell *matCellDef="let programador">
+                                    <button mat-icon-button color="primary"
+                                        (click)="abrirFormularioProgramadores(programador)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button mat-icon-button color="warn"
+                                        (click)="eliminarProgramador(programador.idProgramador)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Filas -->
+                            <tr mat-header-row *matHeaderRowDef="colProgramadores"></tr>
+                            <tr mat-row *matRowDef="let row; columns: colProgramadores;"></tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Especialistas">
+            <div class="toolbar">
+                <button mat-raised-button color="primary" (click)="abrirFormularioEspecialistas()">Nuevo
+                    especialista</button>
+            </div>
+            <mat-card class="especialistas-card">
+                <mat-card-content>
+                    <div class="tabla-scroll">
+                        <table mat-table [dataSource]="especialistas" class="mat-elevation-z8 full-width-table">
+
+                            <!-- Columnas -->
+                            <ng-container matColumnDef="Nombres">
+                                <th mat-header-cell *matHeaderCellDef> Nombres </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.NombresE }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Apellidos">
+                                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.ApellidosE }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Colegiado">
+                                <th mat-header-cell *matHeaderCellDef> Colegiado </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.Colegiado }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Especialidad">
+                                <th mat-header-cell *matHeaderCellDef> Especialidad </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.Especialidad }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Dpi">
+                                <th mat-header-cell *matHeaderCellDef> DPI </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.DpiE }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Tel">
+                                <th mat-header-cell *matHeaderCellDef> Tel </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.TelE }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.EmailE }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Direccion">
+                                <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                                <td mat-cell *matCellDef="let especialista"> {{ especialista.DireccionE }} </td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="acciones">
+                                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                                <td mat-cell *matCellDef="let especialista">
+                                    <button mat-icon-button color="primary"
+                                        (click)="abrirFormularioEspecialistas(especialista)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button mat-icon-button color="warn"
+                                        (click)="eliminarEspecialista(especialista.idEspecialista)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <!-- Filas -->
+                            <tr mat-header-row *matHeaderRowDef="colEspecialistas"></tr>
+                            <tr mat-row *matRowDef="let row; columns: colEspecialistas;"></tr>
+                        </table>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+</div>

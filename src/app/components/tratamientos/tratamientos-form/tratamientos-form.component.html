@@ -1,1 +1,28 @@
-<p>tratamientos-form works!</p>
+<h2 mat-dialog-title>Tratamiento</h2>
+
+<form [formGroup]="tratamientoForm" (ngSubmit)="guardar()" mat-dialog-content style="text-align: center;">
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Tratamiento</mat-label>
+        <input matInput formControlName="Tratamiento">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Costo</mat-label>
+        <input matInput formControlName="Costo" type="number" step="0.10" min="0">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Cantidad</mat-label>
+        <input matInput formControlName="Cantidad" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="margin-left: 10px;">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput formControlName="Descripcion"></textarea>
+    </mat-form-field>
+
+    <div style="text-align: right; margin-top: 10px;">
+        <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+</form>
